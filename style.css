@@ -1,0 +1,118 @@
+:root {
+    --bg-color: #f4f6f8;
+    --text-color: #333;
+    --panel-bg: #fff;
+    --primary: #007bff;
+    --primary-hover: #0056b3;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --success: #28a745;
+    --border: #e0e0e0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+    background-color: var(--panel-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.sidebar { width: 350px; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
+.panel { background-color: var(--panel-bg); padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.panel h2 { font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+
+.chat-section {
+    flex: 1;
+    background-color: var(--panel-bg);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.chat-interface {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.message { padding: 1rem; border-radius: 8px; max-width: 80%; }
+.message.user { align-self: flex-end; background-color: #e3f2fd; color: #0056b3; }
+.message.ai { align-self: flex-start; background-color: #f1f3f4; }
+.message.error { background-color: #ffebee; color: var(--danger); border-left: 4px solid var(--danger); max-width: 100%; align-self: stretch; }
+
+.chat-input-area { padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; background-color: #fafafa; }
+#prompt-input {
+    width: 100%; height: 80px; padding: 0.75rem; border: 1px solid var(--border);
+    border-radius: 4px; resize: none; font-size: 1rem; outline: none;
+}
+#prompt-input:focus { border-color: var(--primary); }
+
+#token-estimator {
+    text-align: right;
+    color: #6c757d;
+    font-size: 0.85rem;
+    font-style: italic;
+    min-height: 20px;
+}
+
+.primary-btn {
+    align-self: flex-end; padding: 0.75rem 1.5rem; background-color: var(--primary);
+    color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;
+}
+.primary-btn:hover { background-color: var(--primary-hover); }
+.primary-btn:disabled { background-color: #aaa; cursor: not-allowed; }
+
+/* Progress bar */
+progress { width: 100%; height: 20px; border-radius: 4px; overflow: hidden; }
+progress::-webkit-progress-bar { background-color: #eee; }
+progress::-webkit-progress-value { background-color: var(--primary); transition: width 0.3s; }
+.progress-danger::-webkit-progress-value { background-color: var(--danger); }
+.progress-warning::-webkit-progress-value { background-color: var(--warning); }
+.progress-text { font-size: 0.9rem; text-align: right; display: block; margin-top: 0.5rem; color: #555; }
+
+/* Badges */
+.badge { padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.85rem; font-weight: bold; color: #fff; }
+.badge.free { background-color: #6c757d; }
+.badge.pro { background-color: var(--primary); }
+.badge.enterprise { background-color: #6610f2; }
+
+/* Counters */
+.counter-big { font-size: 2rem; font-weight: bold; text-align: center; }
+.counter-sub { text-align: center; color: #666; font-size: 0.9rem; margin-top: 0.25rem; }
+.limit-hit { color: var(--danger); }
+
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-overlay.hidden { display: none; }
+.modal-content { background: #fff; padding: 2rem; border-radius: 8px; width: 90%; max-width: 500px; text-align: center; }
+.plan-cards { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
+.plan-card { border: 1px solid var(--border); padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1; transition: 0.2s; }
+.plan-card:hover { border-color: var(--primary); background: #f8f9fa; }
+.plan-card h3 { color: var(--primary); }

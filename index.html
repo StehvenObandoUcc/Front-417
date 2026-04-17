@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Consumption Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <h1>Simulador de Consumo de IA</h1>
+        <div id="plan-badge-container"></div>
+    </header>
+
+    <main class="app-container">
+        <!-- Sidebar - Cuotas y Gráficas -->
+        <aside class="sidebar">
+            <section class="panel quota-panel">
+                <h2>Estado de Cuota</h2>
+                <div id="quota-status-bar"></div>
+            </section>
+
+            <section class="panel rate-limit-panel">
+                <h2>Rate Limit (Requests/Min)</h2>
+                <div id="rate-limit-counter"></div>
+            </section>
+
+            <section class="panel chart-panel">
+                <h2>Uso de Tokens (Últimos 7 días)</h2>
+                <canvas id="usage-bar-chart"></canvas>
+            </section>
+        </aside>
+
+        <!-- Main - Interfaz de Chat -->
+        <section class="chat-section">
+            <div id="chat-interface" class="chat-interface"></div>
+            <div class="chat-input-area">
+                <textarea id="prompt-input" placeholder="Escribe tu mensaje para la IA..."></textarea>
+                <div id="token-estimator"></div>
+                <button id="send-btn" class="primary-btn">Generar</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Upgrade -->
+    <div id="upgrade-modal" class="modal-overlay hidden">
+        <div class="modal-content"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
