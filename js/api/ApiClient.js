@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://localhost:8081/api';
+// Reemplaza esta URL con la que te asigne Render cuando el backend esté desplegado.
+const API_BASE_URL = 'https://backend-417.onrender.com/api';
 
 export class ApiClient {
     static async generate(userId, prompt) {
