@@ -10,7 +10,10 @@
 <body>
     <header class="app-header">
         <h1>Simulador de Consumo de IA</h1>
-        <div id="plan-badge-container"></div>
+        <div class="header-actions" style="display: flex; align-items: center; gap: 10px;">
+            <div id="plan-badge-container"></div>
+            <button class="primary-btn" onclick="document.dispatchEvent(new CustomEvent('ShowUpgradeModal', {detail: 'limit'}))" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Cambiar Plan</button>
+        </div>
     </header>
 
     <main class="app-container">

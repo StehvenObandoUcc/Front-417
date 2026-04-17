@@ -35,9 +35,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             requestsLimit: reqMap[response.plan]
         });
 
+    } catch (e) {
+        console.error('Error instanciando estado inicial (puede que el backend de Render estÃ© dormido):', e);
+        alert('El servidor backend de Render puede estar iniciando. Por favor, intenta interactuar en unos segundos.');
+    } finally {
         // Mostrar plan selector la primera vez (para el demo del profe)
         document.dispatchEvent(new CustomEvent('ShowUpgradeModal', {detail: 'startup'}));
-    } catch (e) {
-        console.error('Error instanciando estado inicial:', e);
     }
 });
