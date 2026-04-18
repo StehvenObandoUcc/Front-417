@@ -14,6 +14,6 @@ export class TokenEstimator {
         const wordCount = text ? text.split(/\s+/).length : 0;
         const tokens = Math.ceil(wordCount * 1.3);
         
-        this.container.innerHTML = tokens > 0 ? \`<small>\u2728 ~\${tokens} tokens estimados por el prompt</small>\` : '';
+        this.container.innerHTML = tokens > 0 ? `<small>✨ ~${tokens} tokens estimados por el prompt</small>` : '';
     }
 }

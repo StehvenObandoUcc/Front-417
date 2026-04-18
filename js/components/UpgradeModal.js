@@ -32,7 +32,7 @@ export class UpgradeModal {
                 tokensLimit: status.plan === 'PRO' ? 500000 : status.plan === 'ENTERPRISE' ? Infinity : 50000,
                 requestsLimit: status.plan === 'PRO' ? 60 : status.plan === 'ENTERPRISE' ? Infinity : 10
             });
-            alert(this.mode === 'startup' ? \`Bienvenido. Has seleccionado el plan \${plan}\` : \`Plan mejorado exitosamente a \${plan}\`);
+            alert(this.mode === 'startup' ? \Bienvenido. Has seleccionado el plan \ + plan : \Plan mejorado exitosamente a \ + plan);
             this.hide();
         } catch (error) {
             alert('Error al seleccionar plan: ' + error.message);
@@ -40,21 +40,21 @@ export class UpgradeModal {
     }
 
     render() {
-        const title = this.mode === 'startup' ? 'Bienvenido - Elige tu SuscripciÃ³n' : 'LÃ­mite Excedido';
-        const desc = this.mode === 'startup' ? 'Para comenzar a usar la plataforma de IA simulada, selecciona un plan.' : 'Has superado el lÃ­mite de tu plan actual. Selecciona un plan superior para continuar.';
-        const closeBtn = this.mode === 'startup' ? '' : '<button class="primary-btn" onclick="document.dispatchEvent(new Event(\\\'HideUpgradeModal\\\'))" style="margin-top:1rem;">Cerrar</button>';
+        const title = this.mode === 'startup' ? 'Bienvenido - Elige tu Suscripción' : 'Límite Excedido';
+        const desc = this.mode === 'startup' ? 'Para comenzar a usar la plataforma de IA simulada, selecciona un plan.' : 'Has superado el límite de tu plan actual. Selecciona un plan superior para continuar.';
+        const closeBtn = this.mode === 'startup' ? '' : '<button class="primary-btn" onclick="document.dispatchEvent(new CustomEvent(\'HideUpgradeModal\'))" style="margin-top:1rem;">Cerrar</button>';
 
-        this.modal.querySelector('.modal-content').innerHTML = \`
-            <h2>\${title}</h2>
-            <p>\${desc}</p>
+        this.modal.querySelector('.modal-content').innerHTML = 
+            <h2> + title + </h2>
+            <p> + desc + </p>
             <div class="plan-cards">
-                \${this.mode === 'startup' ? \`
+                 + (this.mode === 'startup' ? 
                 <div class="plan-card" onclick="document.dispatchEvent(new CustomEvent('UpgradeRequest', {detail: 'FREE'}))">
                     <h3>FREE</h3>
                     <p>50k Tokens/mes</p>
                     <p>10 req/min</p>
                 </div>
-                \` : ''}
+                 : '') + 
                 <div class="plan-card" onclick="document.dispatchEvent(new CustomEvent('UpgradeRequest', {detail: 'PRO'}))">
                     <h3>PRO</h3>
                     <p>500k Tokens/mes</p>
@@ -66,7 +66,7 @@ export class UpgradeModal {
                     <p>Req Ilimitadas</p>
                 </div>
             </div>
-            \${closeBtn}
-        \`;
+             + closeBtn + 
+        ;
     }
 }
